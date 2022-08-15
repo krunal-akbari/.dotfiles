@@ -1,0 +1,8 @@
+require('kishan.map')
+require('kishan.telescope')
+require('kishan.git')
+require('kishan.coc')
+require('kishan.lsp')
+require('kishan.debug')
+require('kishan.harpoon')
+require('kishan.refact')
