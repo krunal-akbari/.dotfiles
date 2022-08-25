@@ -2,8 +2,8 @@
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "",
   "diagnostic.infoSign": "",
-  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
   "diagnostic.hintSign": "•",
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
@@ -17,9 +17,7 @@
     "html",
     "php",
     "xml",
-    "go",
-    "lua",
-    "python"
+    "go"
   ],
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
@@ -48,9 +46,7 @@
     "typeParameter": "\uf728",
     "default": "\uf29c"
   },
-  "go.goplsOptions": {
-    "completeUnimported": true
-  },
+  "python.formatting.provider": "autopep8",
   "Lua.telemetry.enable": true,
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/14.0.3/clangd_14.0.3/bin/clangd"
 }

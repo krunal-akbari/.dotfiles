@@ -59,3 +59,12 @@ P = function(v)
     return v
 end
 Eof
+
+" formater
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost * Format
+augroup END
+
+"bg color
+autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE

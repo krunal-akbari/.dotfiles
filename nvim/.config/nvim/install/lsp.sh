@@ -9,7 +9,6 @@ compile/install.sh
 cd ../..
 ./3rd/luamake/luamake rebuild
 }
-
 function bash () {
     sudo npm i -g bash-language-servevr
 }

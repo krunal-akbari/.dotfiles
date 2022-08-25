@@ -8,7 +8,7 @@ core
 * `<A-k>` && `<A-up>` 1 line up of selected line or current line
 * `<F1>` open telescope help
 * `<F2>` rename variable(function) with coc
-* `<leader>%` 
+* `<leader>%`
 
 Telescope `kishan/telescope.lua`
 * `ctrl+p` open telescope window which has all files
@@ -40,3 +40,5 @@ debug `kishan/debug.lua`
 
 coc `kishan/coc.lua`
 * `<leader>coc` i know that can be done manuly only one time but i use lua and in my pc it happen evry single day so .. i would prefer to do it
+
+Song `kishan/song.lua`

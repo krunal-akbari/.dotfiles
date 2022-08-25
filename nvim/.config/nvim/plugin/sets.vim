@@ -2,7 +2,6 @@ set cursorline
 set cursorcolumn
 set mouse=a
 set nowrap
-set termguicolors
 set nohlsearch
 set relativenumber
 set nohlsearch
