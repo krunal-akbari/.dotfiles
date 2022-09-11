@@ -44,11 +44,12 @@ end
 local M = {}
 
 function M.list_song()
+	M.stop_song()
 	list_song("~/Music/song/")
 end
 
 function M.stop_song()
-	send_command("q")
+	send_command("q\n")
 end
 
 M.play_list = function()

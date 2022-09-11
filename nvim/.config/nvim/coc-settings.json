@@ -17,7 +17,8 @@
     "html",
     "php",
     "xml",
-    "go"
+    "go",
+    "rust"
   ],
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",

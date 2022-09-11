@@ -48,7 +48,7 @@ return require("packer").startup(function(use)
 
 	----lsp
 	use("https://github.com/neovim/nvim-lspconfig.git")
-	--use 'https://github.com/github/copilot.vim.git'
+	--use("https://github.com/github/copilot.vim.git")
 
 	----formater
 	use("https://github.com/prettier/vim-prettier.git")
@@ -68,7 +68,6 @@ return require("packer").startup(function(use)
 	use("https://github.com/junegunn/limelight.vim.git")
 
 	----my plug
-	--use '/home/kishan/Personal/Projects/notification'
 	use("/home/kishan/Personal/Plugin/CodeLens")
 	use("https://github.com/nvim-lua/plenary.nvim.git")
 

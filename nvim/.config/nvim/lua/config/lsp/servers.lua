@@ -35,25 +35,25 @@ local function lua()
 end
 
 local function pyright()
-	require("lspconfig").pyright.setup({})
-	--require("lspconfig").pyright.setup({
-	--on_attach = onattach.on_attach,
-	--cmd = { "pyright-langserver", "--stdio" },
-	--filetypes = { "python" },
-	----root_dir = function(startpath)
-	----       return M.search_ancestors(startpath, matcher)
-	----  end,
-	--settings = {
-	--python = {
-	--analysis = {
-	--autoSearchPaths = true,
-	--diagnosticMode = "workspace",
-	--useLibraryCodeForTypes = true
-	--},
-	--},
-	--},
-	--single_file_support = true
-	--})
+	--require("lspconfig").pyright.setup({})
+	require("lspconfig").pyright.setup({
+		on_attach = onattach.on_attach,
+		cmd = { "pyright-langserver", "--stdio" },
+		filetypes = { "python" },
+		--root_dir = function(startpath)
+		--       return M.search_ancestors(startpath, matcher)
+		--  end,
+		settings = {
+			python = {
+				analysis = {
+					autoSearchPaths = true,
+					diagnosticMode = "workspace",
+					useLibraryCodeForTypes = true,
+				},
+			},
+		},
+		single_file_support = true,
+	})
 end
 
 local function golan()
@@ -83,7 +83,6 @@ end
 
 local function rust()
 	require("lspconfig").rust_analyzer.setup({})
-	require("rust-tools").setup()
 end
 local function html()
 	require("lspconfig").html.setup({})

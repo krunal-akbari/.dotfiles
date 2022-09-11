@@ -15,9 +15,6 @@ M.setup = function()
 			python = {
 				require("formatter.filetypes.python").autopep8,
 			},
-			["*"] = {
-				require("formatter.filetypes.any").remove_trailing_whitespace,
-			},
 		},
 	})
 end
