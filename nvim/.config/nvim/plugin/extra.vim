@@ -69,4 +69,35 @@ augroup END
 "bg color
 autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
 
+" youink the rest of the line
+nnoremap Y y$
 
+" searching with purticuler line
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+nnoremap G Gzz
+vnoremap > >gv
+vnoremap < <gv
+
+com! W w
+cnoreabbrev W! w!
+
+
+" run shall command 
+:set shellcmdflag=-ic
+
+"wipe the ass of registers
+command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
+autocmd VimEnter * WipeReg
+
+
+" clear the whole world with ctrl backspace
+noremap! <A-BS> <C-w>
+noremap! <A-h> <C-w>
+
+noremap! <C-BS> <C-w>
+noremap! <C-h> <C-w>
+
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_level = 6

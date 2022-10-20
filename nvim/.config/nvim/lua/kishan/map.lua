@@ -51,7 +51,7 @@ mapping("n", "<leader>p", ":cprev<cr>zz")
 
 --display setting
 
-mapping("n", "<F5>", ":Goyo<cr>", { silent = true })
+mapping("n", "<F5>", ":Goyo <cr>", { silent = true })
 mapping("n", "<leader>l", ":Limelight!!<cr>", { silent = true })
 
 --testing plugins
@@ -111,3 +111,10 @@ mapping(
 )
 
 mapping("n", "<leader><F1>", ":lua require('kishan.telescope').anime_selector()<cr>", { silent = true })
+
+-- anime anime_selector
+mapping("n", "<leader><F12>", "<cmd>lua require('kishan.telescope').anime_selector()<cr>")
+
+--buffer next priv
+mapping("n", "]]", "<cmd>bn<cr>", { silent = true })
+mapping("n", "[[", "<cmd>bp<cr>", { silent = true })

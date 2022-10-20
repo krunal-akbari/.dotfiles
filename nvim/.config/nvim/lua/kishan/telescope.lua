@@ -65,7 +65,7 @@ require("telescope").setup({
 map(
 	"n",
 	"<leader>5",
-	"<cmd> lua require('telescope').load_extension('coc').file_code_actions(require('telescope.themes').get_dropdown())<cr>",
+	"<cmd> lua require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown())<cr>",
 	{ silent = false }
 )
 

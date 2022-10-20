@@ -1,3 +1,4 @@
+vim.o.guifont = "Jetbrains Mono"
 vim.g.mapleader = " "
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -37,7 +38,7 @@ return require("packer").startup(function(use)
 	use("https://github.com/tpope/vim-rhubarb.git")
 
 	----extra feture
-	use("ThePrimeagen/harpoon")
+	use("/home/kishan/.dotfiles/nvim/.config/nvim/extraplug/harpoon")
 	use("https://github.com/ThePrimeagen/refactoring.nvim.git")
 	use("scrooloose/nerdcommenter")
 
@@ -67,9 +68,8 @@ return require("packer").startup(function(use)
 	use("https://github.com/junegunn/goyo.vim.git")
 	use("https://github.com/junegunn/limelight.vim.git")
 
-	----my plug
-	use("/home/kishan/Personal/Plugin/CodeLens")
 	use("https://github.com/nvim-lua/plenary.nvim.git")
+	----my plug
 
 	----lua with help
 	use("https://github.com/nanotee/luv-vimdocs.git")
@@ -83,6 +83,26 @@ return require("packer").startup(function(use)
 	--linter
 	use({ "https://github.com/mfussenegger/nvim-lint.git" })
 	use({ "https://github.com/mhartington/formatter.nvim.git" })
+
+	--end of the lines cool stuff
+	use({ "https://github.com/tjdevries/cyclist.vim.git" })
+	use({ "https://github.com/lewis6991/gitsigns.nvim.git" })
+	use({ "https://github.com/tjdevries/colorbuddy.nvim.git" })
+	use({ "https://github.com/liuchengxu/vista.vim.git" })
+	use({ "https://github.com/folke/zen-mode.nvim.git" })
+	use({ "https://github.com/preservim/vim-markdown.git" })
+	use({ "https://github.com/tjdevries/manillua.nvim.git" })
+
+	use({ "https://github.com/ThePrimeagen/vim-be-good.git" })
+	use({ "https://github.com/dstein64/vim-startuptime.git" })
+	-- fire nvim
+	use({
+		"glacambre/firenvim",
+		run = function()
+			vim.fn["firenvim#install"](0)
+		end,
+	})
 end),
 	require("kishan"),
-	require("config")
+	require("config"),
+	require("extra")

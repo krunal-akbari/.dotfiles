@@ -74,11 +74,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  CodeLens = {
-    loaded = true,
-    path = "/home/kishan/.local/share/nvim/site/pack/packer/start/CodeLens",
-    url = "/home/kishan/Personal/Plugin/CodeLens"
-  },
   ["auto-pairs"] = {
     loaded = true,
     path = "/home/kishan/.local/share/nvim/site/pack/packer/start/auto-pairs",
@@ -89,6 +84,21 @@ _G.packer_plugins = {
     path = "/home/kishan/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
+  ["colorbuddy.nvim.git"] = {
+    loaded = true,
+    path = "/home/kishan/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim.git",
+    url = "https://github.com/tjdevries/colorbuddy.nvim"
+  },
+  ["cyclist.vim.git"] = {
+    loaded = true,
+    path = "/home/kishan/.local/share/nvim/site/pack/packer/start/cyclist.vim.git",
+    url = "https://github.com/tjdevries/cyclist.vim"
+  },
+  firenvim = {
+    loaded = true,
+    path = "/home/kishan/.local/share/nvim/site/pack/packer/start/firenvim",
+    url = "https://github.com/glacambre/firenvim"
+  },
   ["formatter.nvim.git"] = {
     loaded = true,
     path = "/home/kishan/.local/share/nvim/site/pack/packer/start/formatter.nvim.git",
@@ -98,6 +108,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kishan/.local/share/nvim/site/pack/packer/start/git-worktree.nvim",
     url = "https://github.com/ThePrimeagen/git-worktree.nvim"
+  },
+  ["gitsigns.nvim.git"] = {
+    loaded = true,
+    path = "/home/kishan/.local/share/nvim/site/pack/packer/start/gitsigns.nvim.git",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["goyo.vim.git"] = {
     loaded = true,
@@ -112,7 +127,7 @@ _G.packer_plugins = {
   harpoon = {
     loaded = true,
     path = "/home/kishan/.local/share/nvim/site/pack/packer/start/harpoon",
-    url = "https://github.com/ThePrimeagen/harpoon"
+    url = "/home/kishan/.dotfiles/nvim/.config/nvim/extraplug/harpoon"
   },
   ["limelight.vim.git"] = {
     loaded = true,
@@ -123,6 +138,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kishan/.local/share/nvim/site/pack/packer/start/luv-vimdocs.git",
     url = "https://github.com/nanotee/luv-vimdocs"
+  },
+  ["manillua.nvim.git"] = {
+    loaded = true,
+    path = "/home/kishan/.local/share/nvim/site/pack/packer/start/manillua.nvim.git",
+    url = "https://github.com/tjdevries/manillua.nvim"
   },
   ["mason.nvim"] = {
     loaded = true,
@@ -254,6 +274,11 @@ _G.packer_plugins = {
     path = "/home/kishan/.local/share/nvim/site/pack/packer/start/vim-airline.git",
     url = "https://github.com/vim-airline/vim-airline"
   },
+  ["vim-be-good.git"] = {
+    loaded = true,
+    path = "/home/kishan/.local/share/nvim/site/pack/packer/start/vim-be-good.git",
+    url = "https://github.com/ThePrimeagen/vim-be-good"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/kishan/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -269,6 +294,11 @@ _G.packer_plugins = {
     path = "/home/kishan/.local/share/nvim/site/pack/packer/start/vim-go.git",
     url = "https://github.com/fatih/vim-go"
   },
+  ["vim-markdown.git"] = {
+    loaded = true,
+    path = "/home/kishan/.local/share/nvim/site/pack/packer/start/vim-markdown.git",
+    url = "https://github.com/preservim/vim-markdown"
+  },
   ["vim-prettier.git"] = {
     loaded = true,
     path = "/home/kishan/.local/share/nvim/site/pack/packer/start/vim-prettier.git",
@@ -278,6 +308,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kishan/.local/share/nvim/site/pack/packer/start/vim-rhubarb.git",
     url = "https://github.com/tpope/vim-rhubarb"
+  },
+  ["vim-startuptime.git"] = {
+    loaded = true,
+    path = "/home/kishan/.local/share/nvim/site/pack/packer/start/vim-startuptime.git",
+    url = "https://github.com/dstein64/vim-startuptime"
+  },
+  ["vista.vim.git"] = {
+    loaded = true,
+    path = "/home/kishan/.local/share/nvim/site/pack/packer/start/vista.vim.git",
+    url = "https://github.com/liuchengxu/vista.vim"
+  },
+  ["zen-mode.nvim.git"] = {
+    loaded = true,
+    path = "/home/kishan/.local/share/nvim/site/pack/packer/start/zen-mode.nvim.git",
+    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 

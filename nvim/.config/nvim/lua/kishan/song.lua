@@ -3,7 +3,7 @@ local term_no = 0
 
 local function send_command(commmand)
 	term_no = term_no or 0
-	require("harpoon.term").sendCommand(term_no, commmand .. "\n")
+	require("harpoon.term").sendCommand(term_no, commmand)
 end
 
 local function play_song(content)
@@ -17,7 +17,7 @@ local function Songs(bufnr, map)
 		if close then
 			require("telescope.actions").close(bufnr)
 		end
-		play_song(content.cwd .. "/" .. '"' .. content.value .. '"')
+		play_song(content.cwd .. "/" .. '"' .. content.value .. '"' .. " \n")
 	end
 
 	map("i", "<C-p>", function()
@@ -52,10 +52,6 @@ function M.stop_song()
 	send_command("q\n")
 end
 
-M.play_list = function()
-	list_song("~/Music/song/playlist")
-end
-
 function M.setup()
 	local function installation()
 		require("harpoon.term").sendCommand(1, "sudo apt install mplayer \n")
@@ -67,6 +63,8 @@ end
 local function map()
 	mapping("n", "<F6>", "<cmd>lua require('kishan.song').list_song()<cr>", { silent = true })
 	mapping("n", "<leader>stop", "<cmd>lua require('kishan.song').send_command('clear')<cr>", { silent = true })
+	mapping("n", "<A-right>", "<cmd>lua require('kishan.song').send_command('*')<cr>", { silent = true })
+	mapping("n", "<A-left>", "<cmd>lua require('kishan.song').send_command('/')<cr>", { silent = true })
 
 	vim.api.nvim_create_user_command("SongStart", ":lua require('kishan.song').list_song()<cr>", {})
 	vim.api.nvim_create_user_command("SongStop", ":lua require('kishan.song').stop_song()<cr>", {})

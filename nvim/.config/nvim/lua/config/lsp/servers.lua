@@ -88,6 +88,10 @@ local function html()
 	require("lspconfig").html.setup({})
 end
 
+local function js()
+    require("lspconfig").jdtls.setup({})
+end
+
 local M = {}
 
 function M.setup()
@@ -97,6 +101,7 @@ function M.setup()
 	bash()
 	rust()
 	html()
+	js()
 end
 
 return M

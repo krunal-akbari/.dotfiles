@@ -23,29 +23,3 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
-
-snippet struct "Create A struct" b
-type ${1:name} struct{
-	${0:variable}
-}
-endsnippet
-
-snippet interface "Create A struct" b
-type ${1:name} interface{
-	${0:variable}
-}
-endsnippet
-
-snippet E "errer handaling" b
-if err != nil{
-	${0: return nil,err}
-}
-endsnippet
-
-snippet method "create Method" b
-func (${1}) ${2:name} (${3:args}) ${4}{
-
-	return ${0}
-}
-endsnippet
-
