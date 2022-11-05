@@ -103,3 +103,4 @@ alias tmux="tmux -u"
 alias screenkey="screenkey --opacity 0.2"
 alias nv=nvim
 alias size=ncdu
+alias python="python3.11"

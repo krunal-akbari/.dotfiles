@@ -148,11 +148,33 @@ local function rust()
 end
 
 local function c()
-	require("dap-lldb").setup({
+	local dap = require("dap")
+	dap.adapters.cppdbg = {
+		id = "cppdbg",
 		type = "executable",
-		command = "/usr/bin/lldb-vscode",
-		name = "lldb",
-	})
+		command = "/home/kishan/.dotfiles/extra/c/extension/debugAdapters/bin/OpenDebugAD7",
+	}
+	dap.configurations.cpp = {
+		{
+			name = "Launch file",
+			type = "cppdbg",
+			request = "launch",
+			program = vim.fn.getcwd() .. "/" .. "a.out",
+			cwd = "${workspaceFolder}",
+			stopAtEntry = true,
+		},
+		{
+			name = "Attach to gdbserver :1234",
+			type = "cppdbg",
+			request = "launch",
+			MIMode = "gdb",
+			miDebuggerServerAddress = "localhost:1234",
+			miDebuggerPath = "/usr/bin/gdb",
+			cwd = "${workspaceFolder}",
+			program = vim.fn.getcwd() .. "/" .. "a.out",
+		},
+	}
+	dap.configurations.c = dap.configurations.cpp
 end
 
 local M = {}
@@ -161,7 +183,7 @@ function M.setup()
 	golang()
 	python()
 	rust()
-	--c()
+	c()
 end
 
 return M
