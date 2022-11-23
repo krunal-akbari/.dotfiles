@@ -19,7 +19,12 @@
     "xml",
     "go",
     "rust",
+<<<<<<< HEAD
     "c++"
+=======
+    "c++",
+    "sh"
+>>>>>>> 35a30d0 (this is firevim included)
   ],
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
@@ -50,6 +55,12 @@
   },
   "python.formatting.provider": "autopep8",
   "Lua.telemetry.enable": true,
+<<<<<<< HEAD
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.3/clangd_15.0.3/bin/clangd",
   "clangd.enabled": true
+=======
+  "clangd.enabled": true,
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.3/clangd_15.0.3/bin/clangd",
+  "snippets.ultisnips.pythonPrompt": false
+>>>>>>> 35a30d0 (this is firevim included)
 }

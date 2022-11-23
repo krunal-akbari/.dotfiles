@@ -20,8 +20,7 @@ local stylua_finder = function(path)
     local relative_diff = #file_parents - #root_parents
     for index, dir in ipairs(file_parents) do
       if index > relative_diff then
-        break
-      end
+        break end
 
       local stylua_path = Path:new { dir, "stylua.toml" }
       if stylua_path:exists() then

@@ -1,4 +1,3 @@
-vim.o.guifont = "Jetbrains Mono"
 vim.g.mapleader = " "
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -16,8 +15,10 @@ return require("packer").startup(function(use)
 	--basic
 	use("wbthomason/packer.nvim")
 	use({ "https://github.com/ellisonleao/gruvbox.nvim.git" })
-	use("https://github.com/vim-airline/vim-airline.git")
-	use("vim-airline/vim-airline-themes")
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
 	use("jiangmiao/auto-pairs") -- { to {} commplate
 	use("https://github.com/mbbill/undotree.git")
 	use("https://github.com/preservim/tagbar.git")
@@ -33,13 +34,13 @@ return require("packer").startup(function(use)
 
 	----github
 	use("https://github.com/airblade/vim-gitgutter.git")
-	use("tpope/vim-fugitive")
+	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
 	use("ThePrimeagen/git-worktree.nvim")
 	use("https://github.com/tpope/vim-rhubarb.git")
 
 	----extra feture
-	use("/home/kishan/.dotfiles/nvim/.config/nvim/extraplug/harpoon")
 	use("https://github.com/ThePrimeagen/refactoring.nvim.git")
+	use("https://github.com/ThePrimeagen/harpoon.git")
 	use("scrooloose/nerdcommenter")
 
 	--treesitter
@@ -58,11 +59,7 @@ return require("packer").startup(function(use)
 	use("https://github.com/mfussenegger/nvim-dap.git")
 	use("https://github.com/nvim-telescope/telescope-dap.nvim.git")
 	use("https://github.com/rcarriga/nvim-dap-ui.git")
-	use("https://github.com/leoluz/nvim-dap-go.git") --go-dap
 	use("https://github.com/mfussenegger/nvim-dap-python.git")
-
-	----for go only
-	use("https://github.com/fatih/vim-go.git")
 
 	----for display
 	use("https://github.com/junegunn/goyo.vim.git")
@@ -101,6 +98,12 @@ return require("packer").startup(function(use)
 		run = function()
 			vim.fn["firenvim#install"](0)
 		end,
+	})
+
+	--mason
+	use({
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
 	})
 end),
 	require("kishan"),

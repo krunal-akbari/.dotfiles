@@ -1,5 +1,4 @@
 local M = {}
-
 M.setup = function()
 	-- Utilities for creating configurations
 	local util = require("formatter.util")
@@ -14,6 +13,9 @@ M.setup = function()
 			},
 			python = {
 				require("formatter.filetypes.python").autopep8,
+			},
+			c = {
+				require("formatter.filetypes.c").cpplint,
 			},
 		},
 	})

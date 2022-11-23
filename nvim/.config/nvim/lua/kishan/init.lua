@@ -8,4 +8,8 @@ require("kishan.song")
 require("kishan.folder")
 require("kishan.lsp")
 require("kishan.ppt").setup()
+<<<<<<< HEAD
 require("kishan.cp")
+=======
+require("kishan.lualine")
+>>>>>>> 35a30d0 (this is firevim included)
