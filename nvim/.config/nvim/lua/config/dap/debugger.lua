@@ -52,8 +52,7 @@ local function python()
 				end
 			end,
 		},
-<<<<<<< HEAD
-	})
+	}
 end
 
 local function c()
@@ -84,19 +83,12 @@ local function c()
 		},
 	}
 	dap.configurations.c = dap.configurations.cpp
-=======
-	}
->>>>>>> 35a30d0 (this is firevim included)
 end
 
 local M = {}
 
 function M.setup()
 	python()
-<<<<<<< HEAD
-	rust()
-=======
->>>>>>> 35a30d0 (this is firevim included)
 	c()
 end
 
