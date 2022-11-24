@@ -22,7 +22,7 @@ let g:netrw_banner = 0
 
 "limelight
 let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
+let g:limelight_conceal_ctermfg = 2400
 
 " Color name (:help gui-colors) or RGB color
 let g:limelight_conceal_guifg = 'DarkGray'
@@ -82,9 +82,11 @@ vnoremap < <gv
 
 com! W w
 cnoreabbrev W! w!
+com! Q q
+cnoreabbrev Q! q!
 
 
-" run shall command 
+" run shall command
 :set shellcmdflag=-ic
 
 "wipe the ass of registers

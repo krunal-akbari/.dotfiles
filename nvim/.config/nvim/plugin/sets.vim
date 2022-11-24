@@ -1,18 +1,10 @@
+set mouse=a
 set cursorline
 set cursorcolumn
-set mouse=a
+set nohlsearch
 set nowrap
-set nohlsearch
-set relativenumber
-set nohlsearch
 set hidden
 set noerrorbells
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-set nu
-set nowrap
 set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
@@ -44,6 +36,7 @@ set colorcolumn=80
 filetype plugin indent on
 set backspace=indent,eol,start
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
+set smartindent
 set incsearch ignorecase smartcase hlsearch
 "set wildmode=longest,list,full wildmenu
 set ruler laststatus=3 showcmd showmode
@@ -52,8 +45,8 @@ set backspace=indent,eol,start
 set fillchars+=vert:\
 set encoding=utf-8
 set textwidth=0
-set hidden
 set number
+set relativenumber
 set title
 
 
@@ -68,5 +61,5 @@ set wildignore+=**/coverage/*
 set wildignore+=**/node_modules/*
 set wildignore+=**/android/*
 set wildignore+=**/ios/*
-set wildignore+=**/.git/*
 
+set wildignore+=**/.git/*

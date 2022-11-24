@@ -59,5 +59,5 @@ signs.setup({
 
 -- TODO: decide mappings for this
 -- local nnoremap = vim.keymap.nnoremap
--- nnoremap { "<space>tsw", signs.toggle_word_diff }
--- nnoremap { "<space>tsh", signs.toggle_word_diff }
+--nnoremap({ "<space>tsw", signs.toggle_word_diff })
+--nnoremap({ "<space>tsh", signs.toggle_word_diff })

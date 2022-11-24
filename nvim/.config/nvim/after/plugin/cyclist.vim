@@ -26,7 +26,7 @@ call cyclist#add_listchar_option_set('busy', {
         \ 'nbsp': '☠',
         \ })
 
-if $USER == 'tj-wsl'
+if $USER == 'krunal'
   call cyclist#add_listchar_option_set('wsl', {
           \ 'tab': '» ',
           \ })

@@ -1,6 +1,4 @@
---vim.cmd("colorscheme tokyonight")
 vim.g.theprimeagen_colorscheme = "gruvbox"
---vim.g.theprimeagen_colorscheme = ""
 
 function ColorMyPencils()
 	vim.g.gruvbox_contrast_dark = "hard"

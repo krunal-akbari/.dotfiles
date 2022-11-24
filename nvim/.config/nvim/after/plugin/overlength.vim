@@ -38,9 +38,9 @@ call overlength#set_overlength('lua', 140)
 call overlength#set_overlength('go', 200)
 call overlength#set_overlength('rust', 140)
 
-" call overlength#set_overlength('lsp_markdown', 0)
-" call overlength#set_overlength('markdown', 0)
-" call overlength#set_overlength('', 0)
+ call overlength#set_overlength('lsp_markdown', 0)
+ call overlength#set_overlength('markdown', 0)
+ call overlength#set_overlength('', 0)
 
 " Some of my own "made up" filetypes
 call overlength#set_overlength('lookitt', 0)
