@@ -1,8 +1,3 @@
-if exists('g:started_by_firenvim')
-  set laststatus=0
-else
-  set laststatus=2
-endif
 
 let g:firenvim_config = { 
     \ 'globalSettings': {
@@ -14,7 +9,7 @@ let g:firenvim_config = {
             \ 'content': 'text',
             \ 'priority': 0,
             \ 'selector': 'textarea',
-            \ 'takeover': 'always',
+            \ 'takeover': 'once',
         \ },
     \ }
 \ }
