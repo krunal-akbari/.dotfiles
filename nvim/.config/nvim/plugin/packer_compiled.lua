@@ -315,11 +315,6 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/vim-startuptime.git",
     url = "https://github.com/dstein64/vim-startuptime"
   },
-  ["vista.vim.git"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/vista.vim.git",
-    url = "https://github.com/liuchengxu/vista.vim"
-  },
   ["zen-mode.nvim.git"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/zen-mode.nvim.git",

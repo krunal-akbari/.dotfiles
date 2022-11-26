@@ -82,9 +82,6 @@ vnoremap < <gv
 
 com! W w
 cnoreabbrev W! w!
-com! Q q
-cnoreabbrev Q! q!
-
 
 " run shall command
 :set shellcmdflag=-ic
