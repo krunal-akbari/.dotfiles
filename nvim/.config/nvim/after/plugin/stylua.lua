@@ -7,9 +7,9 @@ if vim.fn.executable("stylua") == 0 then
 	return
 end
 
---vim.cmd([[
-  --augroup StyluaAuto
-    --au!
-    --autocmd BufWritePre *.lua :lua require("kishan.style").format()
-  --augroup END
---]])
+vim.cmd([[
+  augroup StyluaAuto
+    au!
+    autocmd BufWritePre *.lua :lua require("kishan.style").format()
+  augroup END
+]])
