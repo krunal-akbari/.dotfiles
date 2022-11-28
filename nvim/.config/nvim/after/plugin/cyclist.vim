@@ -31,7 +31,7 @@ if $USER == 'krunal'
           \ 'tab': '» ',
           \ })
 
-  call cyclist#activate_listchars('wsl')
+  call cyclist#activate_listchars('limited')
 endif
 
 " I can't figure out fonts and stuff on mac.

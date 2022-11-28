@@ -1,63 +1,53 @@
-local M = {}
+local augroup_highlight = vim.api.nvim_create_augroup("custom-lsp-references", { clear = true })
+local augroup_codelens = vim.api.nvim_create_augroup("custom-lsp-codelens", { clear = true })
+local augroup_format = vim.api.nvim_create_augroup("custom-lsp-format", { clear = true })
+local augroup_semantic = vim.api.nvim_create_augroup("custom-lsp-semantic", { clear = true })
 
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local function test()
-	local opts = { noremap = true, silent = true }
-	vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-	vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+local autocmd = require("kishan.auto").autocmd
+local autocmd_clear = vim.api.nvim_clear_autocmds
 
-	-- Use an on_attach function to only map the following keys
-	-- after the language server attaches to the current buffer
-	local on_attach = function(client, bufnr)
-		-- Enable completion triggered by <c-x><c-o>
-		vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-		-- Mappings.
-		-- See `:help vim.lsp.*` for documentation on any of the below functions
-		local bufopts = { noremap = true, silent = true, buffer = bufnr }
-		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-		vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-		vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-		vim.keymap.set("n", "<space>wl", function()
-			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, bufopts)
-		vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-		vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-		vim.keymap.set("n", "<space>f", function()
-			vim.lsp.buf.format({ async = true })
-		end, bufopts)
-	end
-
-	local lsp_flags = {
-		-- This is the default in Nvim 0.7+
-		debounce_text_changes = 150,
-	}
-	require("lspconfig")["pyright"].setup({
-		on_attach = on_attach,
-		flags = lsp_flags,
-	})
-	require("lspconfig")["tsserver"].setup({
-		on_attach = on_attach,
-		flags = lsp_flags,
-	})
-	require("lspconfig")["rust_analyzer"].setup({
-		on_attach = on_attach,
-		flags = lsp_flags,
-		-- Server-specific settings...
-		settings = {
-			["rust-analyzer"] = {},
-		},
+local autocmd_format = function(async, filter)
+	vim.api.nvim_clear_autocmds({ buffer = 0, group = augroup_format })
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		buffer = 0,
+		callback = function()
+			vim.lsp.buf.format({ async = async, filter = filter })
+		end,
 	})
 end
+
+local filetype_attach = setmetatable({
+	go = function()
+		autocmd_format(false)
+	end,
+
+	scss = function()
+		autocmd_format(false)
+	end,
+
+	css = function()
+		autocmd_format(false)
+	end,
+
+	rust = function()
+		autocmd_format(false)
+	end,
+
+	racket = function()
+		autocmd_format(false)
+	end,
+
+	typescript = function()
+		autocmd_format(false, function(client)
+			return client.name ~= "tsserver"
+		end)
+	end,
+}, {
+	__index = function()
+		return function() end
+	end,
+})
+local M = {}
 
 M.on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
