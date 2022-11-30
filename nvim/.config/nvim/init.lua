@@ -50,18 +50,8 @@ return require("packer").startup(function(use)
 
 	----lsp
 	use("https://github.com/neovim/nvim-lspconfig.git")
-	use("https://github.com/tjdevries/nlua.nvim.git")
-	use("https://github.com/hrsh7th/cmp-nvim-lsp.git")
-	use("https://github.com/tjdevries/complextras.nvim.git")
-	use("https://github.com/onsails/lspkind.nvim.git")
-	use("https://github.com/hrsh7th/nvim-cmp.git")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
-	use("hrsh7th/nvim-cmp")
 	use("https://github.com/L3MON4D3/LuaSnip.git")
-	--use("https://github.com/github/copilot.vim.git")
+	use("https://github.com/github/copilot.vim.git")
 
 	----formater
 	use("https://github.com/prettier/vim-prettier.git")

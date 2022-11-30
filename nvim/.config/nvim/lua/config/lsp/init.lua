@@ -5,6 +5,8 @@ local M = {}
 function M.setup()
 	server.setup()
 	codelens.setup()
+	require("config.lsp.completion")
+	vim.cmd([[copilot enable]])
 end
 
 return M
