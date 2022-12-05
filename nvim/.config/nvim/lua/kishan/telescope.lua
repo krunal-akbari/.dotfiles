@@ -33,7 +33,6 @@ map(
 	{ silent = true }
 )
 map("n", "<leader>vrc", "<cmd>lua require('kishan.telescope').search_dotfile()<cr>")
-map("n", "<leader><cr>", "<cmd>lua require('kishan.telescope')<cr>")
 
 --help setting
 --map("n","","",{silent = true})
@@ -111,8 +110,6 @@ local function image_selector(prompt, cwd)
 			cwd = cwd,
 			attach_mappings = function(prompt_bufnr, map)
 				select_background(prompt_bufnr, map)
-				-- Please continue mapping (attaching additional key maps):
-				-- Ctrl+n/p to move up and down the list.
 				return true
 			end,
 		})

@@ -53,13 +53,13 @@ neogit.setup({
 	-- Setting any section to `false` will make the section not render at all
 	sections = {
 		untracked = {
-			folded = false,
+			folded = true,
 		},
 		unstaged = {
-			folded = false,
+			folded = true,
 		},
 		staged = {
-			folded = false,
+			folded = true,
 		},
 		stashes = {
 			folded = true,
@@ -68,7 +68,7 @@ neogit.setup({
 			folded = true,
 		},
 		unmerged = {
-			folded = false,
+			folded = true,
 		},
 		recent = {
 			folded = true,
@@ -87,8 +87,6 @@ neogit.setup({
 })
 --mapping
 map("n", "<leader>g", ":Neogit<cr>", { silent = true })
-map("n", "<leader>gc", ":G commit<cr>", { silent = true })
-map("n", "<leader>gp", ":G push<cr>", { silent = true })
 
 map(
 	"n",

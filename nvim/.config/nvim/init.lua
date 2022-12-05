@@ -15,6 +15,7 @@ return require("packer").startup(function(use)
 	--basic
 	use("wbthomason/packer.nvim")
 	use({ "https://github.com/ellisonleao/gruvbox.nvim.git" })
+	use({ "https://github.com/ap/vim-css-color'" })
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },

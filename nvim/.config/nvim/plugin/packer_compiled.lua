@@ -300,6 +300,11 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/vim-be-good.git",
     url = "https://github.com/ThePrimeagen/vim-be-good"
   },
+  ["vim-css-color'"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/vim-css-color'",
+    url = "https://github.com/ap/vim-css-color'"
+  },
   ["vim-gitgutter.git"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/vim-gitgutter.git",
