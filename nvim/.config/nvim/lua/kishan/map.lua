@@ -1,9 +1,9 @@
 function mapping(mode, lhs, rhs, opts)
-	local options = { noremap = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 mapping("n", "<leader>t", ":call TrimWhitespace()<CR>", { silent = true })
@@ -35,10 +35,10 @@ mapping("n", "<C-l>", "<C-w><C-l>", { silent = true })
 
 -- functon key may
 mapping(
-	"n",
-	"<F1>",
-	"<cmd>lua require('telescope.builtin').help_tags(require('telescope.themes').get_ivy())<cr>",
-	{ silent = true }
+    "n",
+    "<F1>",
+    "<cmd>lua require('telescope.builtin').help_tags(require('telescope.themes').get_ivy())<cr>",
+    { silent = true }
 )
 mapping("n", "<F2>", "<Plug>(coc-rename)", { silent = false })
 mapping("n", "<F4>", ":UndotreeToggle<cr>", { silent = false })
@@ -68,46 +68,46 @@ mapping("n", "<A-t>", ":TagbarToggle<cr>", { silent = true })
 --refacoring
 mapping("v", "<leader>re", "<Esc><cmd>lua require('refactoring').refactor('Extract Function')<CR>", { silent = true })
 mapping(
-	"v",
-	"<leader>rf",
-	"<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<cr>",
-	{ noremap = true, silent = true, expr = false }
+    "v",
+    "<leader>rf",
+    "<Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<cr>",
+    { noremap = true, silent = true, expr = false }
 )
 
 mapping(
-	"v",
-	"<leader>rv",
-	" <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
-	{ noremap = true, silent = true, expr = false }
+    "v",
+    "<leader>rv",
+    " <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>",
+    { noremap = true, silent = true, expr = false }
 )
 
 mapping(
-	"v",
-	"<leader>ri",
-	" <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
-	{ noremap = true, silent = true, expr = false }
+    "v",
+    "<leader>ri",
+    " <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
+    { noremap = true, silent = true, expr = false }
 )
 
 ---- Extract block doesn't need visual mode
 mapping(
-	"n",
-	"<leader>rb",
-	" <Cmd>lua require('refactoring').refactor('Extract Block')<CR>",
-	{ noremap = true, silent = true, expr = false }
+    "n",
+    "<leader>rb",
+    " <Cmd>lua require('refactoring').refactor('Extract Block')<CR>",
+    { noremap = true, silent = true, expr = false }
 )
 mapping(
-	"n",
-	"<leader>rbf",
-	" <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>",
-	{ noremap = true, silent = true, expr = false }
+    "n",
+    "<leader>rbf",
+    " <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>",
+    { noremap = true, silent = true, expr = false }
 )
 
 ---- Inline variable can also pick up the identifier currently under the cursor without visual mode
 mapping(
-	"n",
-	"<leader>ri",
-	" <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
-	{ noremap = true, silent = true, expr = false }
+    "n",
+    "<leader>ri",
+    " <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>",
+    { noremap = true, silent = true, expr = false }
 )
 
 mapping("n", "<leader><F1>", ":lua require('kishan.telescope').anime_selector()<cr>", { silent = true })
@@ -121,11 +121,11 @@ mapping("n", "[[", "<cmd>bp<cr>", { silent = true })
 local M = {}
 
 M.imap = function(tbl)
-	vim.keymap.set("i", tbl[1], tbl[2], tbl[3])
+    vim.keymap.set("i", tbl[1], tbl[2], tbl[3])
 end
 
 M.nmap = function(tbl)
-	vim.keymap.set("n", tbl[1], tbl[2], tbl[3])
+    vim.keymap.set("n", tbl[1], tbl[2], tbl[3])
 end
 
 return M

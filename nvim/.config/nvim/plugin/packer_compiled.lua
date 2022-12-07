@@ -129,6 +129,11 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/goyo.vim.git",
     url = "https://github.com/junegunn/goyo.vim"
   },
+  ["gruvbox-baby.git"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/gruvbox-baby.git",
+    url = "https://github.com/luisiacc/gruvbox-baby"
+  },
   ["gruvbox.nvim.git"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/gruvbox.nvim.git",
@@ -235,11 +240,6 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
-  ["nvim-web-devicons.git"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-web-devicons.git",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -299,11 +299,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/vim-be-good.git",
     url = "https://github.com/ThePrimeagen/vim-be-good"
-  },
-  ["vim-css-color'"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/vim-css-color'",
-    url = "https://github.com/ap/vim-css-color'"
   },
   ["vim-gitgutter.git"] = {
     loaded = true,
