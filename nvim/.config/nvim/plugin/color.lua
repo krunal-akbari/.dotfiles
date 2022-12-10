@@ -39,3 +39,4 @@ function ColorMyPencils()
 end
 
 ColorMyPencils()
+vim.cmd([[colorscheme gruvbox-baby]])

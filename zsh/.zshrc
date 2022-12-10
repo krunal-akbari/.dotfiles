@@ -78,8 +78,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-)
     source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -119,3 +117,5 @@ alias python="python3.11"
 #start up app
 #picom -b
 #clear
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
