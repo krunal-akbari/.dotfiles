@@ -66,8 +66,6 @@ augroup FormatAutogroup
   autocmd BufWritePost * Format
 augroup END
 
-"bg color
-autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
 
 " youink the rest of the line
 nnoremap Y y$

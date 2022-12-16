@@ -2,8 +2,6 @@ vim.g.theprimeagen_colorscheme = "gruvbox"
 
 function ColorMyPencils()
     vim.g.gruvbox_contrast_dark = "hard"
-    vim.g.tokyonight_transparent_sidebar = true
-    vim.g.tokyonight_transparent = true
     vim.g.gruvbox_invert_selection = "0"
     vim.opt.background = "dark"
 
@@ -14,7 +12,7 @@ function ColorMyPencils()
     end
 
     hl("SignColumn", {
-        bg = "none",
+        bg = "black",
     })
 
     hl("ColorColumn", {
@@ -40,3 +38,7 @@ end
 
 ColorMyPencils()
 vim.cmd([[colorscheme gruvbox-baby]])
+--bg color
+--vim.cmd([["autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE"]])
+
+vim.cmd([["autocmd LuaHighlight"]])
