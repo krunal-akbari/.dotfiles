@@ -12,16 +12,6 @@ return require("packer").startup(function(use)
     if packer_bootstrap then
         require("packer").sync()
     end
-    --use({ "https://github.com/lewis6991/impatient.nvim.git" })
-    --use({ "https://github.com/nvim-lua/popup.nvim.git" })
-    --use("nvim-tree/nvim-web-devicons")
-    --use("https://github.com/MunifTanjim/nui.nvim")
-    --use("https://github.com/kyazdani42/nvim-web-devicons.git")
-    --use("https://github.com/lvim-tech/lvim-ui-config.git")
-    --use("folke/noice.nvim")
-    --use("goolord/alpha-nvim")
-    --use("s1n7ax/nvim-window-picker")
-    --use("nvim-neo-tree/neo-tree.nvim")
 
     --basic
     use("wbthomason/packer.nvim")
