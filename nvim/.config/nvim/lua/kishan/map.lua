@@ -60,9 +60,6 @@ mapping("n", "<leader>pt", "<Plug>PlenaryTestFile<cr>", { silent = true })
 mapping("n", "<leader><leader>x", ":w<cr> |:source %<cr>")
 mapping("n", "<leader>es", ":CocCommand snippets.editSnippets<cr>")
 
---tagbar mapping
-mapping("n", "<A-t>", ":TagbarToggle<cr>", { silent = true })
-
 --refacoring
 mapping("v", "<leader>re", "<Esc><cmd>lua require('refactoring').refactor('Extract Function')<CR>", { silent = true })
 mapping(

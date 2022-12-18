@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ["LuaSnip.git"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/LuaSnip.git",
@@ -84,35 +89,50 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
   },
-  ["coc.nvim"] = {
+  ["cmp-buffer"] = {
     loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/coc.nvim",
-    url = "https://github.com/neoclide/coc.nvim"
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-cmdline"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["colorbuddy.nvim.git"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim.git",
     url = "https://github.com/tjdevries/colorbuddy.nvim"
   },
-  ["copilot.vim.git"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/copilot.vim.git",
-    url = "https://github.com/github/copilot.vim"
-  },
   ["cyclist.vim.git"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/cyclist.vim.git",
     url = "https://github.com/tjdevries/cyclist.vim"
   },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   firenvim = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/firenvim",
     url = "https://github.com/glacambre/firenvim"
-  },
-  ["formatter.nvim.git"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/formatter.nvim.git",
-    url = "https://github.com/mhartington/formatter.nvim"
   },
   ["git-worktree.nvim"] = {
     loaded = true,
@@ -128,11 +148,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/goyo.vim.git",
     url = "https://github.com/junegunn/goyo.vim"
-  },
-  ["gruvbox-baby.git"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/gruvbox-baby.git",
-    url = "https://github.com/luisiacc/gruvbox-baby"
   },
   ["gruvbox.nvim.git"] = {
     loaded = true,
@@ -184,10 +199,10 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nerdcommenter",
     url = "https://github.com/scrooloose/nerdcommenter"
   },
-  ["nvim-dap-python.git"] = {
+  ["nvim-cmp"] = {
     loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-dap-python.git",
-    url = "https://github.com/mfussenegger/nvim-dap-python"
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-dap-ui.git"] = {
     loaded = true,
@@ -198,11 +213,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-dap.git",
     url = "https://github.com/mfussenegger/nvim-dap"
-  },
-  ["nvim-jdtls.git"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-jdtls.git",
-    url = "https://github.com/mfussenegger/nvim-jdtls"
   },
   ["nvim-lint.git"] = {
     loaded = true,
@@ -265,21 +275,6 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/refactoring.nvim.git",
     url = "https://github.com/ThePrimeagen/refactoring.nvim"
   },
-  ["rust-tools.nvim.git"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/rust-tools.nvim.git",
-    url = "https://github.com/simrat39/rust-tools.nvim"
-  },
-  ["tagbar.git"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/tagbar.git",
-    url = "https://github.com/preservim/tagbar"
-  },
-  ["telescope-coc.nvim"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/telescope-coc.nvim",
-    url = "https://github.com/fannheyward/telescope-coc.nvim"
-  },
   ["telescope-dap.nvim.git"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim.git",
@@ -319,11 +314,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/vim-rhubarb.git",
     url = "https://github.com/tpope/vim-rhubarb"
-  },
-  ["vim-startuptime.git"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/vim-startuptime.git",
-    url = "https://github.com/dstein64/vim-startuptime"
   },
   ["zen-mode.nvim.git"] = {
     loaded = true,

@@ -1,5 +1,4 @@
 local actions = require("telescope.actions")
-require("telescope").load_extension("coc")
 require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("refactoring")
 

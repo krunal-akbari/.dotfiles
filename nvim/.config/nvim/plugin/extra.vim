@@ -60,11 +60,6 @@ P = function(v)
 end
 Eof
 
-" formater
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost * Format
-augroup END
 
 
 " youink the rest of the line

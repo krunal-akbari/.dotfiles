@@ -12,26 +12,21 @@ return require("packer").startup(function(use)
     if packer_bootstrap then
         require("packer").sync()
     end
+    use("wbthomason/packer.nvim")
 
     --basic
-    use("wbthomason/packer.nvim")
     use({ "https://github.com/ellisonleao/gruvbox.nvim.git" })
-    use({ "https://github.com/luisiacc/gruvbox-baby.git" })
     use({
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
     use("jiangmiao/auto-pairs") -- { to {} commplate
     use("https://github.com/mbbill/undotree.git")
-    use("https://github.com/preservim/tagbar.git")
 
-    ----coc
-    use({ "neoclide/coc.nvim", branch = "release" })
 
     ---- fuzzy finder
     use("https://github.com/nvim-telescope/telescope.nvim.git")
     use("nvim-lua/plenary.nvim")
-    use("fannheyward/telescope-coc.nvim")
 
     ----github
     use("https://github.com/airblade/vim-gitgutter.git")
@@ -52,7 +47,6 @@ return require("packer").startup(function(use)
     ----lsp
     use("https://github.com/neovim/nvim-lspconfig.git")
     use("https://github.com/L3MON4D3/LuaSnip.git")
-    use("https://github.com/github/copilot.vim.git")
 
     ----formater
     use("https://github.com/prettier/vim-prettier.git")
@@ -61,27 +55,18 @@ return require("packer").startup(function(use)
     use("https://github.com/mfussenegger/nvim-dap.git")
     use("https://github.com/nvim-telescope/telescope-dap.nvim.git")
     use("https://github.com/rcarriga/nvim-dap-ui.git")
-    use("https://github.com/mfussenegger/nvim-dap-python.git")
 
     ----for display
     use("https://github.com/junegunn/goyo.vim.git")
     use("https://github.com/junegunn/limelight.vim.git")
-
     use("https://github.com/nvim-lua/plenary.nvim.git")
-    ----my plug
 
     ----lua with help
     use("https://github.com/nanotee/luv-vimdocs.git")
     use("https://github.com/milisims/nvim-luaref.git")
-    use({ "williamboman/mason.nvim" })
-    use({ "https://github.com/mfussenegger/nvim-jdtls.git" }) --for java only
-
-    --rust
-    use({ "https://github.com/simrat39/rust-tools.nvim.git" })
 
     --linter
     use({ "https://github.com/mfussenegger/nvim-lint.git" })
-    use({ "https://github.com/mhartington/formatter.nvim.git" })
 
     --end of the lines cool stuff
     use({ "https://github.com/tjdevries/cyclist.vim.git" })
@@ -90,9 +75,8 @@ return require("packer").startup(function(use)
     use({ "https://github.com/folke/zen-mode.nvim.git" })
     use({ "https://github.com/preservim/vim-markdown.git" })
     use({ "https://github.com/tjdevries/manillua.nvim.git" })
-
     use({ "https://github.com/ThePrimeagen/vim-be-good.git" })
-    use({ "https://github.com/dstein64/vim-startuptime.git" })
+
     -- fire nvim
     use({
         "glacambre/firenvim",
@@ -101,12 +85,18 @@ return require("packer").startup(function(use)
         end,
     })
 
-    --mason
-    use({
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
-    })
+    --lsp
+    use({ "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig", "j-hui/fidget.nvim" })
+    use {
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
+         'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' ,
+
+    }
+
 end),
-    require("kishan"),
-    require("config"),
-    require("extra")
+require("kishan"),
+require("config"),
+require("extra")
