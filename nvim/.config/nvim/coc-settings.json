@@ -34,7 +34,6 @@
   "codeLens.enable": true,
   "codeLens.position": "eol",
   "coc.preferences.extensionUpdateCheck": "daily",
-  "coc.preferences.enableMessageDialog": true,
   "coc.preferences.formatOnType": true,
   "coc.preferences.willSaveHandlerTimeout": 1000,
   "coc.preferences.enableLinkedEditing": true,
@@ -45,17 +44,13 @@
     "--header-insertion-decorators=false",
     "--background-index"
   ],
-  "diagnostic.floatConfig": {
-    "rounded": true,
-    "border": true
-  },
   "diagnostic.format": "%message [%source]",
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": true,
   "diagnostic.separateRelatedInformationAsDiagnostics": true,
   "eslint.autoFixOnSave": true,
   "eslint.format.enable": true,
-  "eslint.packageManager": "yarn",
+  "eslint.packageManager": "npm",
   "go.goplsPath": "gopls",
   "go.goplsOptions": {
     "experimentalPostfixCompletions": true,
@@ -112,12 +107,6 @@
     "rounded": true,
     "border": true
   },
-  "sumneko-lua.enableNvimLuaDev": true,
-  "Lua.completion.callSnippet": "Both",
-  "Lua.completion.postfix": ".",
-  "Lua.runtime.version": "LuaJIT",
-  "Lua.telemetry.enable": true,
-  "Lua.diagnostics.globals": ["vim", "jit"],
   "snippets.extends": {
     "c": ["c.snippets"],
     "cpp": ["cpp.snippets"],

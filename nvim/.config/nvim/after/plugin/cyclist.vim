@@ -39,4 +39,3 @@ if has("macunix")
   silent! call cyclist#activate_listchars('limited')
 endif
 
-nmap <leader>cl <Plug>CyclistNext

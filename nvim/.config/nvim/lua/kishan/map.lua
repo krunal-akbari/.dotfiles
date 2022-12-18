@@ -10,7 +10,7 @@ mapping("n", "<leader>t", ":call TrimWhitespace()<CR>", { silent = true })
 
 -- alter + up down j and k mapping
 -- alter j
-mapping("i", "A-j>", "<Esc>:m+<cr>==gi", { silent = true })
+mapping("i", "<A-j>", "<Esc>:m+<cr>==gi", { silent = true })
 mapping("n", "<A-j>", ":m+<cr>==", { silent = true })
 mapping("v", "<A-j>", ":m'>+<cr>gv=gv", { silent = true })
 --alter k
@@ -56,10 +56,8 @@ mapping("n", "<leader>l", ":Limelight!!<cr>", { silent = true })
 
 --testing plugins
 mapping("n", "<leader>pt", "<Plug>PlenaryTestFile<cr>", { silent = true })
-mapping("n", "<F10>", ":lua require('runner').run()<cr>", { silent = true })
 
 mapping("n", "<leader><leader>x", ":w<cr> |:source %<cr>")
-mapping("n", "<leader><leader>", ":silent noh<cr>")
 mapping("n", "<leader>es", ":CocCommand snippets.editSnippets<cr>")
 
 --tagbar mapping
