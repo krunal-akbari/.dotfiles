@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -14,6 +15,7 @@ return require("packer").startup(function(use)
     end
     use("wbthomason/packer.nvim")
 
+
     --basic
     use({ "https://github.com/ellisonleao/gruvbox.nvim.git" })
     use({
@@ -23,13 +25,11 @@ return require("packer").startup(function(use)
     use("jiangmiao/auto-pairs") -- { to {} commplate
     use("https://github.com/mbbill/undotree.git")
 
-
     ---- fuzzy finder
     use("https://github.com/nvim-telescope/telescope.nvim.git")
     use("nvim-lua/plenary.nvim")
 
     ----github
-    use("https://github.com/airblade/vim-gitgutter.git")
     use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
     use("ThePrimeagen/git-worktree.nvim")
     use("https://github.com/tpope/vim-rhubarb.git")
@@ -90,11 +90,26 @@ return require("packer").startup(function(use)
     use {
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
         'hrsh7th/cmp-cmdline',
          'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' ,
 
     }
+      use {
+      "ericpubu/lsp_codelens_extensions.nvim",
+      config = function()
+        require("codelens_extensions").setup()
+      end,
+    }
+    use "https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils.git"
+    use "https://github.com/onsails/lspkind.nvim.git"
+    use "https://github.com/rafamadriz/friendly-snippets.git"
+    use "https://github.com/github/copilot.vim.git"
+
+
+    --dont know why i installed
+    use "https://github.com/tjdevries/nlua.nvim.git"
+    use "https://github.com/tjdevries/green_light.nvim.git"
+    use "https://github.com/jose-elias-alvarez/null-ls.nvim.git"
 
 end),
 require("kishan"),

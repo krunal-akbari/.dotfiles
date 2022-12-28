@@ -17,7 +17,7 @@ function ColorMyPencils()
 
     hl("ColorColumn", {
         ctermbg = 0,
-        bg = "#EEEEEE",
+        bg = "#00ADB5",
     })
 
     hl("CursorLineNR", {

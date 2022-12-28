@@ -104,11 +104,6 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  ["cmp-path"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/cmp-path",
-    url = "https://github.com/hrsh7th/cmp-path"
-  },
   cmp_luasnip = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
@@ -118,6 +113,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim.git",
     url = "https://github.com/tjdevries/colorbuddy.nvim"
+  },
+  ["copilot.vim.git"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/copilot.vim.git",
+    url = "https://github.com/github/copilot.vim"
   },
   ["cyclist.vim.git"] = {
     loaded = true,
@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/firenvim",
     url = "https://github.com/glacambre/firenvim"
   },
+  ["friendly-snippets.git"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/friendly-snippets.git",
+    url = "https://github.com/rafamadriz/friendly-snippets"
+  },
   ["git-worktree.nvim"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/git-worktree.nvim",
@@ -149,6 +154,11 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/goyo.vim.git",
     url = "https://github.com/junegunn/goyo.vim"
   },
+  ["green_light.nvim.git"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/green_light.nvim.git",
+    url = "https://github.com/tjdevries/green_light.nvim"
+  },
   ["gruvbox.nvim.git"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/gruvbox.nvim.git",
@@ -163,6 +173,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/limelight.vim.git",
     url = "https://github.com/junegunn/limelight.vim"
+  },
+  ["lsp_codelens_extensions.nvim"] = {
+    config = { "\27LJ\2\nA\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\24codelens_extensions\frequire\0" },
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/lsp_codelens_extensions.nvim",
+    url = "https://github.com/ericpubu/lsp_codelens_extensions.nvim"
+  },
+  ["lspkind.nvim.git"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/lspkind.nvim.git",
+    url = "https://github.com/onsails/lspkind.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -199,6 +220,16 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nerdcommenter",
     url = "https://github.com/scrooloose/nerdcommenter"
   },
+  ["nlua.nvim.git"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nlua.nvim.git",
+    url = "https://github.com/tjdevries/nlua.nvim"
+  },
+  ["null-ls.nvim.git"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/null-ls.nvim.git",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -218,6 +249,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-lint.git",
     url = "https://github.com/mfussenegger/nvim-lint"
+  },
+  ["nvim-lsp-ts-utils.git"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-lsp-ts-utils.git",
+    url = "https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -295,11 +331,6 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/vim-be-good.git",
     url = "https://github.com/ThePrimeagen/vim-be-good"
   },
-  ["vim-gitgutter.git"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/vim-gitgutter.git",
-    url = "https://github.com/airblade/vim-gitgutter"
-  },
   ["vim-markdown.git"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/vim-markdown.git",
@@ -323,6 +354,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: lsp_codelens_extensions.nvim
+time([[Config for lsp_codelens_extensions.nvim]], true)
+try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\24codelens_extensions\frequire\0", "config", "lsp_codelens_extensions.nvim")
+time([[Config for lsp_codelens_extensions.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

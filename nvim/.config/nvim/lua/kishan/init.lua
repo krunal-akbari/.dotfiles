@@ -6,4 +6,3 @@ require("kishan.song")
 require("kishan.ppt").setup()
 require("kishan.lualine")
 require("kishan.telescope")
-
