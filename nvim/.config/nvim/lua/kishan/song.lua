@@ -45,7 +45,7 @@ local M = {}
 
 function M.list_song()
 	M.stop_song()
-	list_song("~/Music/song/")
+	list_song("~/personal/music/songs/")
 end
 
 function M.stop_song()

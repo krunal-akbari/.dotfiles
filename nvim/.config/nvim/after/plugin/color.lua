@@ -24,7 +24,7 @@ function ColorMyPencils()
         bg = "#283928",
     })
     hl("Normal", {
-        bg = "white",
+        bg ="black",
     })
 
     hl("LineNr", {
@@ -35,8 +35,9 @@ function ColorMyPencils()
         fg = "#00ADB5",
     })
 
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
+    vim.api.nvim_set_hl(0, "Normal", { bg = "#2a2b2e" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#151926"})
 end
 
 ColorMyPencils()

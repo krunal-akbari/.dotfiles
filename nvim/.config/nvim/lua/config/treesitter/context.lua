@@ -35,7 +35,7 @@ function M.setup()
 		})
 	end
 
-	ContextSetup(false)
+	ContextSetup(true)
 end
 
 return M

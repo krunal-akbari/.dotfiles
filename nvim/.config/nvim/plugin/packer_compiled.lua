@@ -74,16 +74,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  LuaSnip = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/LuaSnip",
-    url = "https://github.com/L3MON4D3/LuaSnip"
-  },
-  ["LuaSnip.git"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/LuaSnip.git",
-    url = "https://github.com/L3MON4D3/LuaSnip"
-  },
   ["auto-pairs"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/auto-pairs",
@@ -109,6 +99,11 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["coc.nvim"] = {
+    loaded = true,
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/coc.nvim",
+    url = "https://github.com/neoclide/coc.nvim"
+  },
   ["colorbuddy.nvim.git"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim.git",
@@ -124,10 +119,10 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/cyclist.vim.git",
     url = "https://github.com/tjdevries/cyclist.vim"
   },
-  ["fidget.nvim"] = {
+  ["express_line.nvim.git"] = {
     loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/fidget.nvim",
-    url = "https://github.com/j-hui/fidget.nvim"
+    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/express_line.nvim.git",
+    url = "https://github.com/tjdevries/express_line.nvim"
   },
   firenvim = {
     loaded = true,
@@ -185,11 +180,6 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/lspkind.nvim.git",
     url = "https://github.com/onsails/lspkind.nvim"
   },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/lualine.nvim",
-    url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
   ["luv-vimdocs.git"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/luv-vimdocs.git",
@@ -199,16 +189,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/manillua.nvim.git",
     url = "https://github.com/tjdevries/manillua.nvim"
-  },
-  ["mason-lspconfig.nvim"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
-    url = "https://github.com/williamboman/mason-lspconfig.nvim"
-  },
-  ["mason.nvim"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/mason.nvim",
-    url = "https://github.com/williamboman/mason.nvim"
   },
   neogit = {
     loaded = true,
@@ -255,16 +235,6 @@ _G.packer_plugins = {
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-lsp-ts-utils.git",
     url = "https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils"
   },
-  ["nvim-lspconfig"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
-    url = "https://github.com/neovim/nvim-lspconfig"
-  },
-  ["nvim-lspconfig.git"] = {
-    loaded = true,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-lspconfig.git",
-    url = "https://github.com/neovim/nvim-lspconfig"
-  },
   ["nvim-luaref.git"] = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-luaref.git",
@@ -279,12 +249,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/krunal/.local/share/nvim/site/pack/packer/start/nvim-treesitter.git",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
-  },
-  ["nvim-web-devicons"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/krunal/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,

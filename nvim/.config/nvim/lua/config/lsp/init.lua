@@ -1,375 +1,144 @@
-local lspconfig = vim.F.npcall(require, "lspconfig")
-if not lspconfig then
-    return
+vim.opt.updatetime = 300
+vim.opt.signcolumn = "yes"
+local keyset = vim.keymap.set
+function _G.check_back_space()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
-local imap = require("config.lsp.extra").imap
-local nmap = require("config.lsp.extra").nmap
-local autocmd = require("config.lsp.extra").autocmd
-local autocmd_clear = vim.api.nvim_clear_autocmds
+local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
 
-local semantic = vim.F.npcall(require, "nvim-semantic-tokens")
+keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)<cr>")
+keyset("i", "<c-space>", "coc#refresh()", { silent = true, expr = true })
+keyset("i", "<C-y>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+keyset("i", "<CR>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
-local lspconfig_util = require "lspconfig.util"
-local telescope_mapper = require "config.lsp.telemaping"
-local handlers = require "config.lsp.handlers"
+-- Use `[g` and `]g` to navigate diagnostics
+-- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+keyset("n", "[g", "<Plug>(coc-diagnostic-prev)", { silent = true })
+keyset("n", "]g", "<Plug>(coc-diagnostic-next)", { silent = true })
 
-local inlays = require "config.lsp.inlay"
-local ts_util = require "nvim-lsp-ts-utils"
+-- GoTo code navigation
+keyset("n", "gd", "<Plug>(coc-definition)", { silent = true })
+keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
+keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true })
+keyset("n", "gr", "<Plug>(coc-references)", { silent = true })
 
-local custom_init = function(client)
 
-    client.config.flags = client.config.flags or {}
-    client.config.flags.allow_incremental_sync = true
+-- Use K to show documentation in preview window
+function _G.show_docs()
+    local cw = vim.fn.expand('<cword>')
+    if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
+        vim.api.nvim_command('h ' .. cw)
+    elseif vim.api.nvim_eval('coc#rpc#ready()') then
+        vim.fn.CocActionAsync('definitionHover')
+    else
+        vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
+    end
 end
 
-local augroup_highlight = vim.api.nvim_create_augroup("custom-lsp-references", { clear = true })
-local augroup_codelens = vim.api.nvim_create_augroup("custom-lsp-codelens", { clear = true })
-local augroup_format = vim.api.nvim_create_augroup("custom-lsp-format", { clear = true })
-local augroup_semantic = vim.api.nvim_create_augroup("custom-lsp-semantic", { clear = true })
-
-local autocmd_format = function(async, filter)
-    vim.api.nvim_clear_autocmds { buffer = 0, group = augroup_format }
-    vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = 0,
-        callback = function()
-            vim.lsp.buf.format { async = async, filter = filter }
-        end,
-    })
-end
-
-local filetype_attach = setmetatable({
-    ocaml = function()
-        autocmd_format(false)
-    end,
-
-    go = function()
-        autocmd_format(false)
-    end,
-
-    scss = function()
-        autocmd_format(false)
-    end,
-
-    css = function()
-        autocmd_format(false)
-    end,
-
-    rust = function()
-        telescope_mapper("<space>wf", "lsp_workspace_symbols", {
-            ignore_filename = true,
-            query = "#",
-        }, true)
-
-        autocmd_format(false)
-    end,
-
-    racket = function()
-        autocmd_format(false)
-    end,
-
-    typescript = function()
-        autocmd_format(false, function(client)
-            return client.name ~= "tsserver"
-        end)
-    end,
+keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
 
 
-    javascript = function()
-        autocmd_format(false, function(client)
-            return client.name ~= "tsserver"
-        end)
-    end,
-}, {
-    __index = function()
-        return function() end
-    end,
+-- Highlight the symbol and its references on a CursorHold event(cursor is idle)
+vim.api.nvim_create_augroup("CocGroup", {})
+vim.api.nvim_create_autocmd("CursorHold", {
+    group = "CocGroup",
+    command = "silent call CocActionAsync('highlight')",
+    desc = "Highlight symbol under cursor on CursorHold"
 })
 
-local buf_nnoremap = function(opts)
-    if opts[3] == nil then
-        opts[3] = {}
-    end
-    opts[3].buffer = 0
 
-    nmap(opts)
-end
-
-local buf_inoremap = function(opts)
-    if opts[3] == nil then
-        opts[3] = {}
-    end
-    opts[3].buffer = 0
-
-    imap(opts)
-end
-
-local custom_attach = function(client, bufnr)
-    if client.name == "copilot" then
-        return
-    end
-
-    local filetype = vim.api.nvim_buf_get_option(0, "filetype")
-
-    buf_inoremap { "<c-s>", vim.lsp.buf.signature_help }
-
-    buf_nnoremap { "<space>cr", vim.lsp.buf.rename }
-    buf_nnoremap { "<space>ca", vim.lsp.buf.code_action }
-
-    buf_nnoremap { "gd", vim.lsp.buf.definition }
-    buf_nnoremap { "gD", vim.lsp.buf.declaration }
-    buf_nnoremap { "gT", vim.lsp.buf.type_definition }
-
-    buf_nnoremap { "<space>gI", handlers.implementation }
-    buf_nnoremap { "<space>lr", "<cmd>lua R('config.lsp.codelens').run()<CR>" }
-    buf_nnoremap { "<space>rr", "LspRestart" }
-
-    telescope_mapper("gr", "lsp_references", nil, true)
-    telescope_mapper("gI", "lsp_implementations", nil, true)
-    telescope_mapper("<leader>wd", "lsp_document_symbols", { ignore_filename = true }, true)
-    telescope_mapper("<leader>ww", "lsp_dynamic_workspace_symbols", { ignore_filename = true }, true)
-
-    if filetype ~= "lua" then
-        buf_nnoremap { "K", vim.lsp.buf.hover, { desc = "lsp:hover" } }
-    end
-
-    vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-
-    -- Set autocommands conditional on server_capabilities
-    if client.server_capabilities.documentHighlightProvider then
-        autocmd_clear { group = augroup_highlight, buffer = bufnr }
-        autocmd { "CursorHold", augroup_highlight, vim.lsp.buf.document_highlight, bufnr }
-        autocmd { "CursorMoved", augroup_highlight, vim.lsp.buf.clear_references, bufnr }
-    end
-
-    if false and client.server_capabilities.codeLensProvider then
-        if filetype ~= "elm" then
-            autocmd_clear { group = augroup_codelens, buffer = bufnr }
-            autocmd { "BufEnter", augroup_codelens, vim.lsp.codelens.refresh, bufnr, once = true }
-            autocmd { { "BufWritePost", "CursorHold" }, augroup_codelens, vim.lsp.codelens.refresh, bufnr }
-        end
-    end
-
-    local caps = client.server_capabilities
-    if semantic and caps.semanticTokensProvider and caps.semanticTokensProvider.full then
-        autocmd_clear { group = augroup_semantic, buffer = bufnr }
-        autocmd { "TextChanged", augroup_semantic, vim.lsp.buf.semantic_tokens_full, bufnr }
-    end
-
-    -- Attach any filetype specific options to the client
-    filetype_attach[filetype](client)
-end
-
-local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
-
--- Completion configuration
-vim.tbl_deep_extend("force", updated_capabilities, require("cmp_nvim_lsp").default_capabilities())
-updated_capabilities.textDocument.completion.completionItem.insertReplaceSupport = false
-
--- Semantic token configuration
-if semantic then
-    semantic.setup {
-        preset = "default",
-        highlighters = { require "nvim-semantic-tokens.table-highlighter" },
-    }
-
-    semantic.extend_capabilities(updated_capabilities)
-end
-
-updated_capabilities.textDocument.codeLens = { dynamicRegistration = false }
-
-local rust_analyzer, rust_analyzer_cmd = nil, { "rustup", "run", "stable", "rust-analyzer" }
-local has_rt, rt = pcall(require, "rust-tools")
-if has_rt then
-    local extension_path = vim.fn.expand "~/.vscode/extensions/sadge-vscode/extension/"
-    local codelldb_path = extension_path .. "adapter/codelldb"
-    local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-
-    rt.setup {
-        server = {
-            cmd = rust_analyzer_cmd,
-            capabilities = updated_capabilities,
-            on_attach = custom_attach,
-        },
-        dap = {
-            adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-        },
-        tools = {
-            inlay_hints = {
-                auto = true,
-            },
-        },
-    }
-else
-    rust_analyzer = {
-        cmd = rust_analyzer_cmd,
-    }
-end
-
-local servers = {
-    -- Also uses `shellcheck` and `explainshell`
-    bashls = true,
-
-    eslint = true,
-    gdscript = true,
-    -- graphql = true,
-    html = true,
-    pyright = true,
-    vimls = true,
-    yamlls = true,
-    ocamllsp = true,
-
-    cmake = (1 == vim.fn.executable "cmake-language-server"),
-    dartls = pcall(require, "flutter-tools"),
-
-    clangd = {
-        cmd = {
-            "clangd",
-            "--background-index",
-            "--suggest-missing-includes",
-            "--clang-tidy",
-            "--header-insertion=iwyu",
-        },
-        init_options = {
-            clangdFileStatus = true,
-        },
-        flags = {allow_incremental_sync = true}
-    },
-
-    tsserver = {
-        init_options = ts_util.init_options,
-        cmd = { "typescript-language-server", "--stdio" },
-        filetypes = {
-            "javascript",
-            "javascriptreact",
-            "javascript.jsx",
-            "typescript",
-            "typescriptreact",
-            "typescript.tsx",
-        },
-    },
-
-    gopls = {
-        -- root_dir = function(fname)
-            --   local Path = require "plenary.path"
-            --
-            --   local absolute_cwd = Path:new(vim.loop.cwd()):absolute()
-            --   local absolute_fname = Path:new(fname):absolute()
-            --
-            --   if string.find(absolute_cwd, "/cmd/", 1, true) and string.find(absolute_fname, absolute_cwd, 1, true) then
-            --     return absolute_cwd
-            --   end
-            --
-            --   return lspconfig_util.root_pattern("go.mod", ".git")(fname)
-            -- end,
-
-            settings = {
-                gopls = {
-                    codelenses = { test = true },
-                    hints = inlays and {
-                        assignVariableTypes = true,
-                        compositeLiteralFields = true,
-                        compositeLiteralTypes = true,
-                        constantValues = true,
-                        functionTypeParameters = true,
-                        parameterNames = true,
-                        rangeVariableTypes = true,
-                    } or nil,
-                },
-            },
-
-            flags = {
-                debounce_text_changes = 200,
-            },
-        },
-
-        omnisharp = {
-            cmd = { vim.fn.expand "~/build/omnisharp/run", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
-        },
-
-        rust_analyzer = rust_analyzer,
-
-        racket_langserver = true,
-
-        elmls = true,
-        cssls = true,
-    }
-
-    local setup_server = function(server, config)
-        if not config then
-            return
-        end
-
-        if type(config) ~= "table" then
-            config = {}
-        end
-
-        config = vim.tbl_deep_extend("force", {
-            on_init = custom_init,
-            on_attach = custom_attach,
-            capabilities = updated_capabilities,
-            flags = {
-                debounce_text_changes = nil,
-            },
-        }, config)
-
-        lspconfig[server].setup(config)
-    end
+-- Symbol renaming
+keyset("n", "<f2>", "<Plug>(coc-rename)", { silent = true })
 
 
-    for server, config in pairs(servers) do
-        setup_server(server, config)
-    end
+-- Formatting selected code
+keyset("x", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
+keyset("n", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
 
-    --[ An example of using functions...
-    -- 0. nil -> do default (could be enabled or disabled)
-    -- 1. false -> disable it
-    -- 2. true -> enable, use defaults
-    -- 3. table -> enable, with (some) overrides
-    -- 4. function -> can return any of above
-    --
-    -- vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, method, params, client_id, bufnr, config)
-        --   local uri = params.uri
-        --
-        --   vim.lsp.with(
-        --     vim.lsp.diagnostic.on_publish_diagnostics, {
-            --       underline = true,
-            --       virtual_text = true,
-            --       signs = sign_decider,
-            --       update_in_insert = false,
-            --     }
-            --   )(err, method, params, client_id, bufnr, config)
-            --
-            --   bufnr = bufnr or vim.uri_to_bufnr(uri)
-            --
-            --   if bufnr == vim.api.nvim_get_current_buf() then
-            --     vim.lsp.diagnostic.set_loclist { open_loclist = false }
-            --   end
-            -- end
-            --]]
 
-            -- Set up null-ls
-            local use_null = true
-            if use_null then
-                require("null-ls").setup {
-                    sources = {
-                        --require("null-ls").builtins.formatting.stylua,
-                        --require("null-ls").builtins.diagnostics.eslint,
-                        --require("null-ls").builtins.completion.spell,
-                        --require("null-ls").builtins.diagnostics.selene,
-                        require("null-ls").builtins.formatting.prettierd,
-                    },
-                }
-            end
+-- Setup formatexpr specified filetype(s)
+vim.api.nvim_create_autocmd("FileType", {
+    group = "CocGroup",
+    pattern = "typescript,json",
+    command = "setl formatexpr=CocAction('formatSelected')",
+    desc = "Setup formatexpr specified filetype(s)."
+})
 
-            -- Can set this lower if needed.
-            -- require("vim.lsp.log").set_level "debug"
-            -- require("vim.lsp.log").set_level "trace"
+-- Update signature help on jump placeholder
+vim.api.nvim_create_autocmd("User", {
+    group = "CocGroup",
+    pattern = "CocJumpPlaceholder",
+    command = "call CocActionAsync('showSignatureHelp')",
+    desc = "Update signature help on jump placeholder"
+})
 
-            require("config.lsp.completion").setup()
+-- Apply codeAction to the selected region
+-- Example: `<leader>aap` for current paragraph
+local opts = { silent = true, nowait = true }
+keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
+keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
 
-            return {
-                on_init = custom_init,
-                on_attach = custom_attach,
-                capabilities = updated_capabilities,
-            }
+-- Remap keys for apply code actions at the cursor position.
+keyset("n", "<leader>ac", "<Plug>(coc-codeaction-cursor)", opts)
+-- Remap keys for apply code actions affect whole buffer.
+keyset("n", "<leader>as", "<Plug>(coc-codeaction-source)", opts)
+-- Remap keys for applying codeActions to the current buffer
+keyset("n", "<leader>ac", "<Plug>(coc-codeaction)", opts)
+-- Apply the most preferred quickfix action on the current line.
+keyset("n", "<leader>qf", "<Plug>(coc-fix-current)", opts)
+
+-- Remap keys for apply refactor code actions.
+keyset("n", "<leader>re", "<Plug>(coc-codeaction-refactor)", { silent = true })
+keyset("x", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
+keyset("n", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
+
+-- Run the Code Lens actions on the current line
+keyset("n", "<leader>cl", "<Plug>(coc-codelens-action)", opts)
+
+
+-- Map function and class text objects
+-- NOTE: Requires 'textDocument.documentSymbol' support from the language server
+keyset("x", "if", "<Plug>(coc-funcobj-i)", opts)
+keyset("o", "if", "<Plug>(coc-funcobj-i)", opts)
+keyset("x", "af", "<Plug>(coc-funcobj-a)", opts)
+keyset("o", "af", "<Plug>(coc-funcobj-a)", opts)
+keyset("x", "ic", "<Plug>(coc-classobj-i)", opts)
+keyset("o", "ic", "<Plug>(coc-classobj-i)", opts)
+keyset("x", "ac", "<Plug>(coc-classobj-a)", opts)
+keyset("o", "ac", "<Plug>(coc-classobj-a)", opts)
+
+
+
+
+-- Use CTRL-S for selections ranges
+-- Requires 'textDocument/selectionRange' support of language server
+keyset("n", "<C-s>", "<Plug>(coc-range-select)", { silent = true })
+keyset("x", "<C-s>", "<Plug>(coc-range-select)", { silent = true })
+
+
+-- Add `:Format` command to format current buffer
+vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
+-- " Add `:Fold` command to fold current buffer
+vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", { nargs = '?' })
+
+-- Add `:OR` command for organize imports of the current buffer
+vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
+
+-- Mappings for CoCList
+-- code actions and coc stuff
+---@diagnostic disable-next-line: redefined-local
+local opts = { silent = true, nowait = true }
+-- Show all diagnostics
+keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
+-- Manage extensions
+keyset("n", "<space>e", ":<C-u>CocList extensions<cr>", opts)
+-- Show commands
+keyset("n", "<space>c", ":<C-u>CocList commands<cr>", opts)
+-- Find symbol of current document
+keyset("n", "<space>o", ":<C-u>CocList outline<cr>", opts)
+-- Search workspace symbols
+keyset("n", "<space>s", ":<C-u>CocList -I symbols<cr>", opts)
+-- Resume latest coc list
+keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)

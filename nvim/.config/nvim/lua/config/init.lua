@@ -1,5 +1,3 @@
-require("mason").setup()
-require("mason-lspconfig").setup()
 require("config.lsp")
 require("config.dap").setup() -- dap/init.lua
 require("config.treesitter").setup() -- treesitter/init.lua

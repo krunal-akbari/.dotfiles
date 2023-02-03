@@ -1,5 +1,4 @@
 vim.g.mapleader = " "
-
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -14,16 +13,12 @@ return require("packer").startup(function(use)
         require("packer").sync()
     end
     use("wbthomason/packer.nvim")
-
-
     --basic
     use({ "https://github.com/ellisonleao/gruvbox.nvim.git" })
-    use({
-        "nvim-lualine/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    })
     use("jiangmiao/auto-pairs") -- { to {} commplate
+
     use("https://github.com/mbbill/undotree.git")
+    use("https://github.com/tjdevries/express_line.nvim.git")
 
     ---- fuzzy finder
     use("https://github.com/nvim-telescope/telescope.nvim.git")
@@ -45,10 +40,9 @@ return require("packer").startup(function(use)
     use("romgrk/nvim-treesitter-context")
 
     ----lsp
-    use("https://github.com/neovim/nvim-lspconfig.git")
-    use("https://github.com/L3MON4D3/LuaSnip.git")
+    use { 'neoclide/coc.nvim', branch = 'release' }
 
-    ----formater
+    --formate
     use("https://github.com/prettier/vim-prettier.git")
 
     ----debug
@@ -86,19 +80,18 @@ return require("packer").startup(function(use)
     })
 
     --lsp
-    use({ "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig", "j-hui/fidget.nvim" })
     use {
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-cmdline',
-         'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' ,
+        'hrsh7th/cmp-nvim-lsp', 'saadparwaiz1/cmp_luasnip',
 
     }
-      use {
-      "ericpubu/lsp_codelens_extensions.nvim",
-      config = function()
-        require("codelens_extensions").setup()
-      end,
+    use {
+        "ericpubu/lsp_codelens_extensions.nvim",
+        config = function()
+            require("codelens_extensions").setup()
+        end,
     }
     use "https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils.git"
     use "https://github.com/onsails/lspkind.nvim.git"
@@ -112,6 +105,6 @@ return require("packer").startup(function(use)
     use "https://github.com/jose-elias-alvarez/null-ls.nvim.git"
 
 end),
-require("kishan"),
-require("config"),
-require("extra")
+    require("kishan"),
+    require("config"),
+    require("extra")
